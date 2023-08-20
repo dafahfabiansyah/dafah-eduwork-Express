@@ -1,36 +1,18 @@
-import express from 'express';
+const express = require('express');
 
 const app = express();
+const PORT = 4000;
+
+app.listen(PORT, () => {
+  console.log(`API listening on PORT ${PORT} `);
+});
 
 app.get('/', (req, res) => {
-  res.send({
-    status: 'running',
-    message: 'hello world',
-  });
+  res.send('hello world🥳');
 });
 
-app.get('/home', (req, res) => {
-  res.send({
-    status: 'running',
-    message: 'hello home',
-  });
+app.get('/about', (req, res) => {
+  res.send('about page ');
 });
 
-app.get('/item', (req, res) => {
-  res.send({
-    status: 'running',
-    message: 'hello item',
-  });
-});
-
-app.get('/request', (req, res) => {
-  res.json({
-    path: req.path,
-    originalPath: req.originalUrl,
-    hostname: req.hostname,
-  });
-});
-
-app.listen(3000, () => {
-  console.log('Server is running on port : 3000');
-});
+module.exports = app;
